@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { TiltCard } from "@/components/motion/TiltCard";
 
 const ORGANIC_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -103,10 +104,10 @@ export function HorizontalGallery() {
       <div
         ref={containerRef}
         onTouchStart={() => setShowHint(false)}
-        className="flex cursor-grab touch-pan-x gap-4 overflow-x-auto overflow-y-hidden pb-2 active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex cursor-grab touch-pan-x gap-4 overflow-x-auto overflow-y-hidden py-8 active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {loopedBouquets.map((bouquet, index) => (
-          <div
+          <TiltCard
             key={`${bouquet.src}-${index}`}
             className="relative aspect-[4/5] w-[80vw] max-w-[360px] flex-shrink-0 overflow-hidden rounded-3xl sm:w-[38vw]"
           >
@@ -117,7 +118,7 @@ export function HorizontalGallery() {
               sizes="(max-width: 640px) 80vw, 38vw"
               className="object-cover"
             />
-          </div>
+          </TiltCard>
         ))}
       </div>
 
