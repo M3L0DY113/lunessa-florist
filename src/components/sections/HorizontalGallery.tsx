@@ -2,14 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { PlaceholderBlock } from "@/components/ui/PlaceholderBlock";
+import Image from "next/image";
 
 const ORGANIC_EASE = [0.22, 1, 0.36, 1] as const;
 
-const tones = ["primary", "accent", "neutral"] as const;
+// Your photos live in public/bouquets/. Add or remove entries here to match
+// how many images you have — the marquee adapts automatically.
 const bouquets = Array.from({ length: 7 }, (_, index) => ({
-  label: `Bouquet ${index + 1}`,
-  tone: tones[index % tones.length],
+  src: `/bouquets/bouquet-${index + 1}.jpeg`,
+  alt: `Lunessa soap flower bouquet ${index + 1}`,
 }));
 
 // Three copies of the set; scroll position is kept inside the middle copy so
@@ -105,12 +106,18 @@ export function HorizontalGallery() {
         className="flex cursor-grab touch-pan-x gap-4 overflow-x-auto overflow-y-hidden pb-2 active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {loopedBouquets.map((bouquet, index) => (
-          <PlaceholderBlock
-            key={`${bouquet.label}-${index}`}
-            label={bouquet.label}
-            tone={bouquet.tone}
-            className="aspect-[4/5] w-[80vw] max-w-[360px] flex-shrink-0 sm:w-[38vw]"
-          />
+          <div
+            key={`${bouquet.src}-${index}`}
+            className="relative aspect-[4/5] w-[80vw] max-w-[360px] flex-shrink-0 overflow-hidden rounded-3xl sm:w-[38vw]"
+          >
+            <Image
+              src={bouquet.src}
+              alt={bouquet.alt}
+              fill
+              sizes="(max-width: 640px) 80vw, 38vw"
+              className="object-cover"
+            />
+          </div>
         ))}
       </div>
 
