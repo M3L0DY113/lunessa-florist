@@ -44,9 +44,18 @@ export function Hero() {
           Hand-shaped, botanically inspired, and built to stay beautiful long
           after fresh flowers would fade.
         </motion.p>
-        <motion.div variants={item}>
+        <motion.div
+          variants={item}
+          className="flex flex-col items-center gap-4 sm:flex-row"
+        >
           <Button href="#shop" variant="primary">
             Shop Now
+          </Button>
+          <Button
+            href="https://wa.me/60197838261?text=Hi%2C%20I'd%20like%20to%20order%20a%20bouquet"
+            variant="outline"
+          >
+            Message us on WhatsApp
           </Button>
         </motion.div>
       </motion.div>

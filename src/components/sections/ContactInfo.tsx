@@ -5,7 +5,7 @@ const details = [
   { label: "Visit", value: "123 Petal Lane, Suite 4, Your City" },
   { label: "Hours", value: "Tue – Sun, 10am – 6pm" },
   { label: "Contact", value: "hello@lunessaflorist.com" },
-  { label: "WhatsApp", value: "+1 (000) 000-0000" },
+  { label: "WhatsApp", value: "+60 19-783 8261" },
 ];
 
 export function ContactInfo() {
